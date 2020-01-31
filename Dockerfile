@@ -60,7 +60,8 @@ RUN ["/bin/bash" , "-c", ". /opt/conda/etc/profile.d/conda.sh && \
     jupyter labextension install @jupyterlab/hub-extension \
             @jupyter-widgets/jupyterlab-manager && \
     jupyter labextension install jupyterlab-datawidgets && \
-    conda deactivate"]
+    conda deactivate && \
+    conda init bash"]
 
 ADD ./startup.sh /startup.sh
 ADD ./monitor_traffic.sh /monitor_traffic.sh

@@ -46,6 +46,7 @@ dependencies:
   - cdsapi
   - cfgrib
   - cis
+  - cesm
   - pip:
       - bioblend 
       - galaxy-ie-helpers
