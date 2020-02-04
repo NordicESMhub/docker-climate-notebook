@@ -13,9 +13,12 @@ RUN apt-get -qq update && apt-get install --no-install-recommends -y libcurl4-op
     apt-transport-https python-dev libc-dev pandoc pkg-config liblzma-dev libbz2-dev libpcre3-dev \
     build-essential libblas-dev liblapack-dev gfortran libzmq3-dev libyaml-dev libxrender1 fonts-dejavu \
     libfreetype6-dev libpng-dev net-tools procps libreadline-dev wget software-properties-common octave \
+    ca-certificates wget update-ca-certificates vim subversion \
     # IHaskell dependencies
     zlib1g-dev libtinfo-dev libcairo2-dev libpango1.0-dev && \
     apt-get autoremove -y && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+ENV USER=jovyan
 
 USER jovyan
 
@@ -23,7 +26,7 @@ USER jovyan
 ADD climate_environment.yml climate_environment.yml
 
 # Python packages
-RUN conda env update -f climate_environment.yml && conda clean -yt && \
+RUN conda update -n base conda && conda env update -f climate_environment.yml && conda clean -yt && \
     pip install --no-cache-dir bioblend galaxy-ie-helpers nbgitpuller \
                dask_labextension ipydatawidgets sidecar geojsoncontour \
                pysplit
@@ -40,28 +43,16 @@ RUN /opt/conda/bin/jupyter labextension install @jupyterlab/hub-extension @jupyt
 # Install requirements for cesm 
 ADD esmvaltool_environment.yml esmvaltool_environment.yml
 RUN conda env create -f esmvaltool_environment.yml && conda clean -yt
-RUN ["/bin/bash" , "-c", ". /opt/conda/etc/profile.d/conda.sh && \
-    conda activate esmvaltool && \
-    python -m pip install ipykernel && \
-    ipython kernel install --user --name esmvaltool && \
-    python -m ipykernel install --user --name=esmvaltool && \
-    conda deactivate"]
 
 # Install requirements for cesm 
 ADD cesm_environment.yml cesm_environment.yml
 
 # Python packages
 RUN conda env create -f cesm_environment.yml && conda clean -yt
-RUN ["/bin/bash" , "-c", ". /opt/conda/etc/profile.d/conda.sh && \
-    conda activate cesm && \
-    python -m pip install ipykernel && \
-    ipython kernel install --user --name cesm && \
-    python -m ipykernel install --user --name=cesm && \
-    jupyter labextension install @jupyterlab/hub-extension \
-            @jupyter-widgets/jupyterlab-manager && \
-    jupyter labextension install jupyterlab-datawidgets && \
-    conda deactivate && \
-    conda init bash"]
+
+ADD config_cime.tar config_cime.tar
+
+RUN tar xf config_cime.tar && mv .cime /home/jovyan/.  
 
 ADD ./startup.sh /startup.sh
 ADD ./monitor_traffic.sh /monitor_traffic.sh
