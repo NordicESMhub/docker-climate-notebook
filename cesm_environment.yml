@@ -7,46 +7,23 @@ dependencies:
   - biopython
   # core scipy packages
   - numpy
-  - scipy
   - matplotlib
-  - pandas
   - xarray
    # geospatial
-  - iris
   - cartopy
   - basemap
   - basemap-data-hires
-  - geopandas
-  - rasterio
   - netcdf4
-  - erddapy
-  - pydap
   - h5py
   - h5netcdf
-  - regionmask
-  - rio-cogeo
-  # geoscience-related
-  - climlab
-  - metpy
-  - satpy
-  - gsw
-  - eofs
-  - esmpy
-  - xesmf
-  - windspharm
   # misc
   - python-wget
   - wget
   - pip
-  - pyaerocom
   - nc-time-axis
-  - nco
-  - jupytext
-  - cdo
-  - cdsapi
   - cfgrib
-  - cis
   - cesm
+  - lftp
   - pip:
       - bioblend 
       - galaxy-ie-helpers

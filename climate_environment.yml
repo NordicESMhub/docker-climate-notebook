@@ -5,11 +5,11 @@ channels:
   - defaults
 dependencies:
   - biopython
+  - ipykernel
   # core scipy packages
   - numpy
   - scipy
   - matplotlib
-  - pandas
   - xarray
   - sparse
   - sympy
@@ -20,12 +20,13 @@ dependencies:
   - tensorflow
   - keras
   - pytorch-cpu
-  # pyviz
+  # data science stuff
+  - dask-xgboost
   - holoviews
   - panel
+  - jupyter-panel-proxy
   - geoviews
   - hvplot
-  - geoviews
   - datashader
   - seaborn
   - altair
@@ -33,13 +34,10 @@ dependencies:
   - folium
   - vega
   - vega_datasets
-  - palettable
-  - cmocean
-   # geospatial
+  # geospatial
   - iris
   - cartopy
   - basemap
-  - basemap-data-hires
   - geopandas
   - rasterio
   - netcdf4
@@ -54,7 +52,7 @@ dependencies:
   - metpy
   - satpy
   - gsw
-  - eofs
+#  - eofs
   - esmpy
   - xesmf
   - windspharm
@@ -64,19 +62,22 @@ dependencies:
   - intake-esm
   - fsspec
   - intake-stac
+  - sat-stac
+  - sat-search
   # zarr-related
   - zarr
   - numcodecs
   - python-blosc
   - lz4
-  - gcsfs
+  - gcsfs>=0.5.2
   - s3fs
   - tiledb-py
   # jupyter-related
   - ipyleaflet
+#  - watermark
   # xarray-related
   - xgcm
-  - xrft
+#  - xrft
   - xhistogram
   - xlrd
   - xrviz
@@ -86,34 +87,45 @@ dependencies:
   # misc
   - python-wget
   - prefect
-  - rasterstats
+  - pyaerocom
+  - xclim
+  - cdo
+  - cdsapi
+  - cfgrib
+  - cis
+  - branca
+  - cmocean
+  - jupytext
   - requests
+  - rasterstats
+  - xrft
+  - papermill
+  - pillow
+  - pip
   - plotly
   - psy-maps
   - psy-reg
   - psyplot
   - psyplot-gui
-  - psy-maps
-  - psy-reg
-  - papermill
-  - pillow
-  - pip
-  - pyaerocom
   - nc-time-axis
   - nco
-  - jupytext
+  - palettable
+  - pandas
   - geopy
-  - branca
-  - cdo
-  - cdsapi
-  - cfgrib
-  - cis
+  - geoviews
+  - eofs
   - pip:
-      - bioblend 
-      - galaxy-ie-helpers
-      - dask_labextension
-      - ipydatawidgets
-      - sidecar
-      - geojsoncontour
-      - nbgitpuller
-      - pysplit
+    - bioblend 
+    - galaxy-ie-helpers
+    - dask_labextension
+    - ipydatawidgets
+    - sidecar
+    - geojsoncontour
+    - nbgitpuller
+    - pysplit
+    - intake_geopandas
+    - git+https://github.com/NCAR/intake-esm.git@main
+    - git+https://github.com/hhuangwx/cmaps.git#egg=cmaps
+    - lckr-jupyterlab-variableinspector
+    - jupyterlab-git
+    - sentinelsat
