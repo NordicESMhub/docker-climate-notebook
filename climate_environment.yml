@@ -114,6 +114,7 @@ dependencies:
   - geopy
   - geoviews
   - eofs
+  - esgf-pyclient
   - pip:
     - bioblend 
     - galaxy-ie-helpers

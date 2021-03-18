@@ -113,7 +113,7 @@ RUN pip install dask-labextension
 EXPOSE 8787
 EXPOSE 8786
 
-RUN jupyter labextension install @jupyterlab/geojson-extension @jupyterlab/toc-extension @jupyterlab/katex-extension @jupyterlab/fasta-extension @jupyterlab/git
+RUN jupyter labextension install @jupyterlab/geojson-extension @jupyterlab/toc-extension @jupyterlab/katex-extension @jupyterlab/fasta-extension
 
 RUN jupyter labextension install @jupyterlab/hub-extension @jupyter-widgets/jupyterlab-manager && \
     jupyter labextension install jupyter-leaflet jupyterlab-datawidgets nbdime-jupyterlab dask-labextension && \
