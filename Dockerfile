@@ -143,6 +143,8 @@ RUN mkdir -p /import/jupyter/outputs/ && \
     mkdir /export/ && \
     chown -R $NB_USER:users /home/$NB_USER/ /import /export/
 
+ENV USER=$NB_USER
+
 WORKDIR /import
 
 # Start Jupyter Notebook
